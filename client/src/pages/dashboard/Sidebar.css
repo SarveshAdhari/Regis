@@ -1,0 +1,15 @@
+.shared{
+    display: flex;
+    flex-direction: row;
+}
+
+.sidebar{
+    display: none;
+    background-color: red;
+}
+.sidebar-visible{
+    background-color: #0E6BA8;
+    display: flex;
+    height: 90.7vh;
+    width: 272px;
+}
