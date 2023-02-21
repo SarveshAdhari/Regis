@@ -8,6 +8,7 @@
 
 .tog{
     margin: auto 15px;
+    cursor: pointer;
 }
 
 .tog img{
@@ -20,11 +21,11 @@
     font-weight: 400px;
     margin: 0 auto;
     color: #fff;
+    cursor: pointer;
 }
 
 .nav-user{
-    margin-right: 15px;
-    margin: auto 0;
+    margin: auto 15px auto 0;
     display: flex;
     flex-direction: row;
 }
@@ -33,15 +34,28 @@
     margin: 0 20px 0 5px;
 }
 
+.nav-profile img{
+    height: 40px;
+    align-items: center;
+}
+
 .nav-logout{
-    margin: 0 15px 0 5px;
+    margin: auto 0;
 }
 
 .logout-btn{
     color: #fff;
     background: none;
     border: 1px solid #fff;
-    border-radius: 20px;
-    padding: 5px 20px;
+    border-radius: 15px;
+    padding: 3px 20px;
     font-size: 18px;
+    transition: 200ms ease-in-out
+}
+
+.logout-btn:hover{
+    color: #0E6BA8;
+    background-color: #fff;
+    cursor: pointer;
+    transition: 300ms ease-in-out;
 }

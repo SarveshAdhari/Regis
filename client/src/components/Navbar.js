@@ -1,7 +1,8 @@
 import { useState } from 'react'
 import { useAppContext } from '../context/appContext'
 
-import toggle from '../logo/togg.svg'
+import { ToggleImage } from '../logo'
+import { DisplayPicture } from '../components'
 import './Navbar.css'
 
 const Navbar = () => {
@@ -16,14 +17,14 @@ const Navbar = () => {
     return(
         <div className='nav'>
             <div className='tog'>
-                <img src={toggle} alt="..." onClick={toggleSide}/>
+                <img src={ToggleImage} alt="..." onClick={toggleSide}/>
             </div>
             <div className='nav-heading'>
                 <h1>REGIS</h1>
             </div>
             <div className='nav-user'>
                 <div className='nav-profile'>
-                    <img src='Google.com' alt="profile" />
+                    <DisplayPicture />
                 </div>
                 <div className='nav-logout'>
                     <button className='logout-btn'>

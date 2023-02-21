@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { useAppContext } from "../../context/appContext";
 
-import Navbar from "../../components/Navbar";
+import { Navbar } from "../../components";
 import "./Sidebar.css";
 
 const SharedLayout = () => {
@@ -13,7 +13,9 @@ const SharedLayout = () => {
         <div className={sidebarState ? "sidebar-visible" : "sidebar"}>
           someed
         </div>
-        <Outlet />
+        <div className="shared-content">
+          <Outlet />
+        </div>
       </div>
     </>
   );
