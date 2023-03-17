@@ -2,12 +2,14 @@ import React,{ useReducer, useContext } from "react"
 import reducer from "./reducer"
 
 import {
-    TOGGLE_SIDEBAR
+    TOGGLE_SIDEBAR,
+    TOGGLE_MEMBER,
 } from './actions'
 
 const initialState = {
     isLoading: false,
-    sidebarState: true,
+    sidebarState: false,
+    isMember: true,
 }
 
 const AppContext = React.createContext()
@@ -17,7 +19,7 @@ const AppProvider = ({children}) => {
 
     //ToggleSidebar
     const toggleSidebar = (currState) =>{
-        console.log(currState);
+        // console.log(currState);
         try{
             dispatch({type:TOGGLE_SIDEBAR, payload:{currState}})
         }
@@ -26,11 +28,21 @@ const AppProvider = ({children}) => {
         }
     }
 
+    const toggleMember = (togg) => {
+        try{
+            dispatch({type: TOGGLE_MEMBER, payload:{togg}})
+        }
+        catch(error){
+            alert("Some Error Occurred")
+        }
+    }
+
     return <AppContext.Provider
             value={
                 {
                 ...state,
                 toggleSidebar,
+                toggleMember,
                 }
             }>
             {children}

@@ -1,0 +1,136 @@
+.register{
+    background-color: #9EB7E5;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.reg-container{
+    background-color: #fff;
+    width: 450px;
+    height: 450px;
+    margin: auto;
+    border-top: 5px solid #0E6BA8;
+    border-radius: 10px;
+    box-shadow: 5px 5px 2px rgba(0,0,0,0.1);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.log-container{
+    background-color: #fff;
+    width: 450px;
+    height: 350px;
+    margin: auto;
+    border-top: 5px solid #0E6BA8;
+    border-radius: 10px;
+    box-shadow: 5px 5px 2px rgba(0,0,0,0.1);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.reg-heading{
+    margin: 5px auto;
+}
+
+.reg-heading span{
+    color: #A4243B;
+    font-size: 72px;
+}
+
+.reg-line{
+    background-color: #0E6BA8;
+    height: 1px;
+    margin: 5px 0;
+}
+
+.reg-form{
+    margin: 20px 5px 10px 5px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+}
+
+.reg-username{
+    margin: 5px;
+    width: 90%;
+}
+
+.reg-username input{
+    box-sizing: border-box;
+    width: 100%;
+    height: 38px;
+    font-size: 24px;
+    outline: none;
+}
+
+.reg-email{
+    margin: 5px;
+    width: 90%;
+}
+
+.reg-email input{
+    box-sizing: border-box;
+    width: 100%;
+    height: 38px;
+    font-size: 24px;
+    outline: none;
+}
+
+.reg-password{
+    margin: 5px;
+    width: 90%;
+}
+
+.reg-password input{
+    box-sizing: border-box;
+    width: 100%;
+    height: 38px;
+    font-size: 24px;
+    outline: none;
+}
+
+.button{
+    margin: 5px 10px 10px 10px;
+    display: flex;
+}
+
+.reg-btn{
+    margin: auto;
+    border: 1px solid white;
+    border-radius: 20px;
+    width: 300px;
+    font-size: 24px;
+    padding: 5px;
+    background-color: #9EB7E5;
+    color: white;
+}
+
+.reg-btn:hover{
+    box-sizing: border-box;
+    border: 1px solid #9EB7E5;
+    background-color: white;
+    color: #9EB7E5;
+}
+
+.toggle{
+    box-sizing: border-box;
+    margin: 5px auto;
+}
+
+.member{
+    font-size: 24px;
+}
+
+.reg-tog{
+    color:#0E6BA8;
+    font-size: 24px;
+    margin-left: 5px;
+}
+
+.reg-tog:hover{
+    cursor: pointer;
+}
