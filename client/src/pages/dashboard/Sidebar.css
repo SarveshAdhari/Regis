@@ -5,16 +5,42 @@
 }
 
 .sidebar{
-    display: none;
-}
-.sidebar-visible{
     background-color: #0E6BA8;
     height: 93vh;
     width: 272px;
     display: flex;
     flex-direction: column;
 }
+.sidebar-visible{
+    display: none;
+}
 
 .shared-content{
     flex-grow: 1;
+}
+
+@media screen and (min-width:767px) and (max-width:1023px){
+    .sidebar{
+        width: 252px;
+    }
+}
+
+@media screen and (max-width: 767px){
+
+    .sidebar{
+        background-color: #0E6BA8;
+        height: 93vh;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .sidebar-visible{
+        display: none;
+
+    }
+
+    .hide-content{
+        display: none;
+    }
 }

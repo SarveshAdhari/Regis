@@ -13,7 +13,7 @@ const SharedLayout = () => {
         <div className={sidebarState ? "sidebar-visible" : "sidebar"}>
           someed
         </div>
-        <div className="shared-content">
+        <div className={sidebarState? 'shared-content':"hide-content"}>
           <Outlet />
         </div>
       </div>

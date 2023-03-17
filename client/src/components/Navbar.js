@@ -6,7 +6,7 @@ import { DisplayPicture } from '../components'
 import './Navbar.css'
 
 const Navbar = () => {
-    const { toggleSidebar } = useAppContext()
+    const { toggleSidebar, sidebarState } = useAppContext()
     const [sidebar, setSidebar] = useState(false);
 
     const toggleSide = () => {
