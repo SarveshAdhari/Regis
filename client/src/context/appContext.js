@@ -9,7 +9,6 @@ import {
 const initialState = {
     isLoading: false,
     sidebarState: false,
-    isMember: true,
 }
 
 const AppContext = React.createContext()
@@ -27,14 +26,17 @@ const AppProvider = ({children}) => {
             alert("Some Error Occurred");
         }
     }
+    
+    //Login User
+    const loginUser = (currUser) => {
+        console.log('User logged in')
+        console.log(currUser)
+    }
 
-    const toggleMember = (togg) => {
-        try{
-            dispatch({type: TOGGLE_MEMBER, payload:{togg}})
-        }
-        catch(error){
-            alert("Some Error Occurred")
-        }
+    //Register User
+    const registerUser = (currUser) => {
+        console.log('Registered User')
+        console.log(currUser)
     }
 
     return <AppContext.Provider
@@ -42,7 +44,8 @@ const AppProvider = ({children}) => {
                 {
                 ...state,
                 toggleSidebar,
-                toggleMember,
+                loginUser,
+                registerUser,
                 }
             }>
             {children}

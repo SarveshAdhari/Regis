@@ -1,6 +1,6 @@
 import './FormComponent.css'
 
-const FormComponent = ({label, type, name, placeholder}) => {
+const FormComponent = ({label, type, name, placeholder, handleChange}) => {
   return (
     <div className='form-comp'>
         <label>
@@ -11,7 +11,7 @@ const FormComponent = ({label, type, name, placeholder}) => {
         type={type}
         name={name}
         placeholder={placeholder}
-        // onChange={}
+        onChange={handleChange}
         />
     </div>
   )
