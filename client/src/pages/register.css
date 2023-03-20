@@ -8,7 +8,6 @@
 .reg-container{
     background-color: #fff;
     width: 450px;
-    height: 450px;
     margin: auto;
     border-top: 5px solid #0E6BA8;
     border-radius: 10px;
@@ -21,7 +20,6 @@
 .log-container{
     background-color: #fff;
     width: 450px;
-    height: 350px;
     margin: auto;
     border-top: 5px solid #0E6BA8;
     border-radius: 10px;
@@ -118,7 +116,7 @@
 
 .toggle{
     box-sizing: border-box;
-    margin: 5px auto;
+    margin: 10px auto 20px;
 }
 
 .member{

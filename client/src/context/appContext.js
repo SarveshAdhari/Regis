@@ -3,12 +3,16 @@ import reducer from "./reducer"
 
 import {
     TOGGLE_SIDEBAR,
-    TOGGLE_MEMBER,
+    PASSWORD_UNMATCH,
+    CLEAR_ALERT,
 } from './actions'
 
 const initialState = {
     isLoading: false,
     sidebarState: false,
+    showAlert: false,
+    alertType:'',
+    alertText:'',
 }
 
 const AppContext = React.createContext()
@@ -25,6 +29,19 @@ const AppProvider = ({children}) => {
         catch(error){
             alert("Some Error Occurred");
         }
+    }
+
+    //Clear Alert
+    const clearAlert = () => {
+        setTimeout(()=>{
+            dispatch({type:CLEAR_ALERT})
+        },2000)
+    }
+
+    //Passwords Do Not Match (Register)
+    const passwordUnmatch = () =>{
+        dispatch({type: PASSWORD_UNMATCH})
+        clearAlert()
     }
     
     //Login User
@@ -44,6 +61,7 @@ const AppProvider = ({children}) => {
                 {
                 ...state,
                 toggleSidebar,
+                passwordUnmatch,
                 loginUser,
                 registerUser,
                 }

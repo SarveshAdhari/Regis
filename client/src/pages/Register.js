@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FormComponent } from '../components'
+import { FormComponent, Alert } from '../components'
 import { useAppContext } from '../context/appContext'
 
 import './register.css'
@@ -14,12 +14,13 @@ const initialState = {
   }
 
 const Register = () => {
-    const {loginUser, registerUser} = useAppContext()
+    const {loginUser, registerUser, showAlert, passwordUnmatch} = useAppContext()
     const navigate = useNavigate()
     const [values, setValues] = useState(initialState)
 
     const toggleMember = (e) =>{
-        setValues({...values,isMember: !values.isMember})
+        e.preventDefault()
+        setValues({...values, isMember: !values.isMember})
     }
     
     const handleChange = (e) =>{
@@ -30,20 +31,32 @@ const Register = () => {
 
     const handleSubmit = () =>{
         const { name, email, password, confirmPassword, isMember } = values
+        
         if(!email || !password || (!isMember && !name)){
+            console.log(values)
             alert('Please enter all credentials')
+            return
         }
-        console.log(values)
-        console.log('Form is submitted')
-        if(values.isMember){
-            const currUser = {email,password}
-            loginUser(currUser)
-            navigate('/')
+        
+        if(!isMember && (password !== confirmPassword)){
+            passwordUnmatch()
+            return
         }
-        else{
-            const currUser = {name,email,password}
-            registerUser(currUser)
-            navigate('/profile')
+
+
+
+        const currUser = {name,email,password}
+        try {
+            if(values.isMember){
+                loginUser(currUser)
+                navigate('/')
+            }
+            else{
+                registerUser(currUser)
+                navigate('/profile')
+            }
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -56,12 +69,13 @@ const Register = () => {
                 </div>
                 <div className='reg-line'>
                 </div>
+                {showAlert && <Alert />}
                 <div className='reg-form'>
                     {/* Username */}
                     {!values.isMember && <div className='reg-username'>
                         <FormComponent 
                             type='text'
-                            name='username'
+                            name='name'
                             placeholder='Username'
                             handleChange={handleChange}
                         />
@@ -88,7 +102,7 @@ const Register = () => {
                     {!values.isMember && <div className='reg-password'>
                         <FormComponent 
                             type='password'
-                            name='confirm'
+                            name='confirmPassword'
                             placeholder='Confirm Password'
                             handleChange={handleChange}
                         />
@@ -105,8 +119,8 @@ const Register = () => {
                 </div>
                 <div className='toggle'>
                     <span className='member'>{values.isMember? 'Not a member?':'Already a member?'}</span> 
-                    <span className='reg-tog' onClick={toggleMember}>{!values.isMember? 'Login':'Register'}</span>
-                </div>
+                    <span className='reg-tog' onClick={toggleMember}>{values.isMember? 'Register':'Login'}</span>
+                </div> 
             </div>
         </div>
     )
