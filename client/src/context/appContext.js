@@ -5,7 +5,16 @@ import {
     TOGGLE_SIDEBAR,
     PASSWORD_UNMATCH,
     CLEAR_ALERT,
+    DISPLAY_ALERT,
+    REGISTER_USER_BEGIN,
+    REGISTER_USER_SUCCESS,
+    REGISTER_USER_ERROR,
+    LOGIN_USER_BEGIN,
+    LOGIN_USER_SUCCESS,
+    LOGIN_USER_ERROR,
 } from './actions'
+
+const user = localStorage.getItem('user')
 
 const initialState = {
     isLoading: false,
@@ -13,6 +22,7 @@ const initialState = {
     showAlert: false,
     alertType:'',
     alertText:'',
+    user: user ? JSON.parse(user): null,
 }
 
 const AppContext = React.createContext()
@@ -43,17 +53,56 @@ const AppProvider = ({children}) => {
         dispatch({type: PASSWORD_UNMATCH})
         clearAlert()
     }
+
+    //Display Alert
+    const displayAlert = () => {
+        dispatch({type:DISPLAY_ALERT})
+        clearAlert()
+    }
+
+    //Add User To Local Storage
+    const addUserToLocalStorage = ({user}) => {
+        localStorage.setItem('user', JSON.stringify(user))
+    }
+
+    //Remove User From Local Storage
+    const removeUserFromLocalStorage = () => {
+        localStorage.removeItem('user')
+    }
     
     //Login User
     const loginUser = (currUser) => {
-        console.log('User logged in')
-        console.log(currUser)
+        dispatch({type: LOGIN_USER_BEGIN})
+        try{
+            console.log(currUser)
+            const { email, password } = currUser
+            const user = {email,password}
+            dispatch({type:LOGIN_USER_SUCCESS, payload:{user}})
+            addUserToLocalStorage({user})
+        }
+        catch(error){
+            dispatch({type:LOGIN_USER_ERROR, payload:{msg:error.response.data.msg}})
+        }
     }
 
     //Register User
     const registerUser = (currUser) => {
-        console.log('Registered User')
-        console.log(currUser)
+        dispatch({type:REGISTER_USER_BEGIN})
+        try {
+            const { name,email,password } = currUser
+            const user = {name,email,password}
+            dispatch({type:REGISTER_USER_SUCCESS, payload:{user}})
+            addUserToLocalStorage({user})
+        } catch (error) {
+            dispatch({type:REGISTER_USER_ERROR, payload:{msg: error.response.data.msg}})
+        }
+        clearAlert()
+    }
+
+    //Logout User
+    const logoutUser = () => {
+        // dispatch({type: LOGOUT_USER})
+        removeUserFromLocalStorage()
     }
 
     return <AppContext.Provider
@@ -64,6 +113,8 @@ const AppProvider = ({children}) => {
                 passwordUnmatch,
                 loginUser,
                 registerUser,
+                displayAlert,
+                logoutUser,
                 }
             }>
             {children}

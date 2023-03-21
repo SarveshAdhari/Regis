@@ -1,12 +1,20 @@
 .alert{
-    width: 80%;
+    width: 85%;
     padding: 10px;
-    font-size: 16px;
+    font-size: 18px;
     margin: auto;
-    border-radius: 10px;
+    border-radius: 5px;
+    color: #0A100D;
 }
 
 .danger{
-    background-color: red;
-    color: black;
+    background-color: #DE3C4B;    
+}
+
+.warning{
+    background-color: #FAA916;
+}
+
+.success{
+    background-color: #198754;
 }

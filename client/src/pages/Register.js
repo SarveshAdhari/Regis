@@ -14,7 +14,15 @@ const initialState = {
   }
 
 const Register = () => {
-    const {loginUser, registerUser, showAlert, passwordUnmatch} = useAppContext()
+    const {
+        loginUser, 
+        registerUser, 
+        showAlert, 
+        passwordUnmatch, 
+        displayAlert,
+        user,
+    } = useAppContext()
+
     const navigate = useNavigate()
     const [values, setValues] = useState(initialState)
 
@@ -33,8 +41,7 @@ const Register = () => {
         const { name, email, password, confirmPassword, isMember } = values
         
         if(!email || !password || (!isMember && !name)){
-            console.log(values)
-            alert('Please enter all credentials')
+            displayAlert()
             return
         }
         
@@ -49,16 +56,30 @@ const Register = () => {
         try {
             if(values.isMember){
                 loginUser(currUser)
-                navigate('/')
+                // navigate('/')
             }
             else{
                 registerUser(currUser)
-                navigate('/profile')
+                // navigate('/profile')
             }
         } catch (error) {
             console.log(error)
         }
     }
+
+    useEffect(() => {
+      if(user && values.isMember){
+        setTimeout(() => {
+            navigate('/')
+        }, 2000);
+      }
+      if(user && !values.isMember){
+        setTimeout(() => {
+            navigate('/profile')
+        }, 2000);
+      }
+    }, [user,navigate,values.isMember])
+    
 
     
     return(
