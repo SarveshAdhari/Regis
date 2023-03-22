@@ -21,13 +21,14 @@ const Register = () => {
         passwordUnmatch, 
         displayAlert,
         user,
+        passwordLength,
     } = useAppContext()
 
     const navigate = useNavigate()
     const [values, setValues] = useState(initialState)
 
-    const toggleMember = (e) =>{
-        e.preventDefault()
+    const toggleMember = () =>{
+        if(user) return
         setValues({...values, isMember: !values.isMember})
     }
     
@@ -50,17 +51,18 @@ const Register = () => {
             return
         }
 
-
+        if(!isMember && password.length < 6){
+            passwordLength()
+            return
+        }
 
         const currUser = {name,email,password}
         try {
             if(values.isMember){
                 loginUser(currUser)
-                // navigate('/')
             }
             else{
                 registerUser(currUser)
-                // navigate('/profile')
             }
         } catch (error) {
             console.log(error)
@@ -134,6 +136,7 @@ const Register = () => {
                     <button 
                     className='reg-btn'
                     onClick={handleSubmit}
+                    disabled={user}
                     >
                         {values.isMember? 'Login':'Register'}
                     </button>

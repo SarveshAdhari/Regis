@@ -12,6 +12,8 @@ import {
     LOGIN_USER_BEGIN,
     LOGIN_USER_SUCCESS,
     LOGIN_USER_ERROR,
+    LOGOUT_USER,
+    PASSWORD_LENGTH,
 } from './actions'
 
 const user = localStorage.getItem('user')
@@ -51,6 +53,12 @@ const AppProvider = ({children}) => {
     //Passwords Do Not Match (Register)
     const passwordUnmatch = () =>{
         dispatch({type: PASSWORD_UNMATCH})
+        clearAlert()
+    }
+
+    //Password Too Short
+    const passwordLength = () => {
+        dispatch({type: PASSWORD_LENGTH})
         clearAlert()
     }
 
@@ -101,7 +109,7 @@ const AppProvider = ({children}) => {
 
     //Logout User
     const logoutUser = () => {
-        // dispatch({type: LOGOUT_USER})
+        dispatch({type: LOGOUT_USER})
         removeUserFromLocalStorage()
     }
 
@@ -115,6 +123,7 @@ const AppProvider = ({children}) => {
                 registerUser,
                 displayAlert,
                 logoutUser,
+                passwordLength,
                 }
             }>
             {children}

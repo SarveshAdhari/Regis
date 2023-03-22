@@ -9,6 +9,8 @@ import {
     LOGIN_USER_BEGIN,
     LOGIN_USER_SUCCESS,
     LOGIN_USER_ERROR,
+    LOGOUT_USER,
+    PASSWORD_LENGTH,
 } from './actions'
 
 const reducer = (state, action) =>{
@@ -88,6 +90,21 @@ const reducer = (state, action) =>{
             showAlert: true,
             alertType: 'danger',
             alertText: action.payload.msg,
+        }
+    }
+    if(action.type === LOGOUT_USER){
+        return{
+            ...state,
+            user: null,
+            showAlert: false,
+        }
+    }
+    if(action.type === PASSWORD_LENGTH){
+        return{
+            ...state,
+            showAlert: true,
+            alertType: 'warning',
+            alertText: 'Password Too Short!',
         }
     }
     throw new Error(`No such action: ${action.type}`)

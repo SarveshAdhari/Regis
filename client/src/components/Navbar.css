@@ -43,6 +43,10 @@
     align-items: center;
 }
 
+.nav-profile img:hover{
+    cursor: pointer;
+}
+
 .nav-logout{
     margin: auto 0;
 }
