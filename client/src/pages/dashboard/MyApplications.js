@@ -1,6 +1,6 @@
 const MyApplications = () => {
     return(
-        <h1>All Applications</h1>
+        <h1>My Applications</h1>
     )
 }
 

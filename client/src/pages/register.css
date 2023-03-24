@@ -132,3 +132,56 @@
 .reg-tog:hover{
     cursor: pointer;
 }
+
+@media screen and (max-width: 767px){
+    .reg-container{
+        width: 250px;
+        box-sizing: border-box;
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+    }
+    .log-container{
+        width: 250px;
+        box-sizing: border-box;
+    }
+    .reg-heading span{
+        font-size: 32px;
+        box-sizing: border-box;
+        width: 100%;
+    }
+    .reg-line{
+        width: 100%;
+        box-sizing: border-box;
+    }
+    .reg-form{
+        box-sizing: border-box;
+        width: 100%;
+        margin: auto;
+    }
+    .reg-username input{
+        height: 28px;
+        font-size: 18px;
+    }
+    .reg-email input{
+        height: 28px;
+        font-size: 18px;
+    }
+    .reg-password input{
+        height: 28px;
+        font-size: 18px;
+    }
+    .reg-btn{
+        width: 150px;
+        font-size: 16px;
+        padding: 3px;
+    }
+    .member{
+        font-size: 18px;
+    }
+    
+    .reg-tog{
+        font-size: 18px;
+    }
+}

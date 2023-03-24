@@ -34,7 +34,7 @@ const AppProvider = ({children}) => {
 
     //ToggleSidebar
     const toggleSidebar = (currState) =>{
-        // console.log(currState);
+        console.log(currState);
         try{
             dispatch({type:TOGGLE_SIDEBAR, payload:{currState}})
         }

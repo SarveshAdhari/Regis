@@ -13,6 +13,30 @@
     width: 272px;
     display: flex;
     flex-direction: column;
+    color: #fff;
+    font-size: 22px;
+}
+
+.sidebar-visible div{
+    margin: 10px 0;
+    width: 100%;
+    transition: 200ms ease-in;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.sidebar-visible div:hover{
+    opacity: 100%;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255,0.75);
+    width: 100%;
+    color: #0E6BA8;
+    transition: 400ms ease-in-out;
+}
+
+.shared-logout{
+    display: none;
 }
 
 .shared-content{
@@ -36,10 +60,14 @@
         height: 93vh;
         width: 100%;
         display: flex;
-        flex-direction: column; 
+        flex-direction: column;
     }
 
     .hide-content{
         display: none;
+    }
+
+    .shared-logout{
+        display:initial;
     }
 }

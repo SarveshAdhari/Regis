@@ -7,13 +7,11 @@ import { DisplayPicture } from '../components'
 import './Navbar.css'
 
 const Navbar = () => {
-    const { toggleSidebar, logoutUser } = useAppContext()
-    const [sidebar, setSidebar] = useState(true);
+    const { toggleSidebar, logoutUser,sidebarState } = useAppContext()
     const navigate = useNavigate()
 
     const toggleSide = () => {
-        setSidebar(!sidebar)
-        toggleSidebar(sidebar)
+        toggleSidebar(!sidebarState)
     }
 
     const logout = () => {
